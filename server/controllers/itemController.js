@@ -8,10 +8,8 @@ class ItemController {
             const {name, description, price, info} = req.body
             const {img} = req.files
             let fileName = uuid.v4() + ".jpg"
-            img.mv(path.resolve(__dirname, '..', 'static', fileName))
-
             const item = await Item.create({name, description, price, img: fileName})
-
+            img.mv(path.resolve(__dirname, '..', 'static', fileName))
             return res.json(item)
         } catch (e) {
             next(ApiError.badRequest(e.message))
@@ -19,7 +17,12 @@ class ItemController {
     }
 
     async getAll(req, res) {
-
+        try {
+            const items = await Item.findAll();
+            return res.json(items);
+        } catch (e) {
+            next(ApiError.badRequest(e.message))
+        }
     }
 
     async getOne(req, res) {
