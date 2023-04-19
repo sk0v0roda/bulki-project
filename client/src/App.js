@@ -1,9 +1,18 @@
+import React from 'react'
+import {BrowserRouter} from 'react-router-dom'
+import AppRouter from "./components/AppRouter"
+import NavBar from "./components/NavBar"
+import {Nav} from "react-bootstrap";
+import Footer from "./components/Footer";
+
 function App() {
-  return (
-    <div>
-      РАБОТАЕТ
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <NavBar />
+            <AppRouter/>
+            <Footer />
+        </BrowserRouter>
+    );
 }
 
 export default App;
