@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
-import {Button, Container, Nav, Navbar, NavLink} from "react-bootstrap";
-import {MAIN_PAGE_ROUTE} from "../utils/consts";
+import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {Context} from "../index";
-import Auth from "../pages/Auth";
 
 const Footer = () => {
     const {user} = useContext(Context)
     return (
-        <div>
+        <div
+        style={{position: "fixed", bottom: 0, width: "100%" }}
+        >
             <Navbar bg="dark" variant="dark">
                 <Container >
                     <Nav className="ml-auto" style={{color: 'white'}}>
