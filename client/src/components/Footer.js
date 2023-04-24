@@ -1,8 +1,11 @@
 import React, {useContext} from 'react';
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {Context} from "../index";
+import {useNavigate} from "react-router-dom";
+import {LOGIN_ROUTE} from "../utils/consts";
 
 const Footer = () => {
+    const navigate = useNavigate()
     const {user} = useContext(Context)
     return (
         <div
@@ -11,7 +14,7 @@ const Footer = () => {
             <Navbar bg="dark" variant="dark">
                 <Container >
                     <Nav className="ml-auto" style={{color: 'white'}}>
-                        <Button onClick={() => user.setIsAuth(true)}>Вход администратора</Button>
+                        <Button onClick={() => navigate(LOGIN_ROUTE)}>Вход администратора</Button>
                     </Nav>
                 </Container>
             </Navbar>

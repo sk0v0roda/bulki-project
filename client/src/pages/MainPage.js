@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import ItemList from "../components/ItemList";
+import {observer} from "mobx-react-lite";
+import {Context} from "../index";
+import {fetchItems} from "../http/itemAPI";
 
-const MainPage = () => {
+const MainPage = observer(() => {
+    const {item} = useContext(Context)
+
+    useEffect(() => {
+        fetchItems().then(data => item.setItems(data))
+    })
+
     return (
         <Container>
             <Row>
@@ -18,6 +27,6 @@ const MainPage = () => {
             </Row>
         </Container>
     );
-};
+});
 
 export default MainPage;

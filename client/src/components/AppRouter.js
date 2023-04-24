@@ -3,9 +3,11 @@ import {Routes, Route, Navigate} from 'react-router-dom'
 import {authRoutes, publicRoutes} from "../routes";
 import {MAIN_PAGE_ROUTE} from "../utils/consts";
 import {Context} from "../index";
+import {observer} from "mobx-react-lite";
 
-const AppRouter = () => {
+const AppRouter = observer(() => {
     const {user} = useContext(Context)
+
     return (
             <Routes>
                 {user.isAuth && authRoutes.map(({path, Component}) =>
@@ -17,6 +19,6 @@ const AppRouter = () => {
                 <Route path='*' element={<Navigate to={MAIN_PAGE_ROUTE}/>}/>
             </Routes>
     );
-};
+});
 
 export default AppRouter;

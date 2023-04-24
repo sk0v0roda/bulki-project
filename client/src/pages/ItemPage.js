@@ -1,29 +1,30 @@
-import React from 'react';
-import {Col, Container, Form, Image, Row} from "react-bootstrap";
+import React, {useEffect, useState} from 'react';
+import {useParams} from "react-router-dom"
+import {Col, Container, Form, FormText, Image, Row} from "react-bootstrap";
+import {fetchOneItem} from "../http/itemAPI";
 
 const ItemPage = () => {
-    const item = {
-        id: 1,
-        name: "Булка вкусная",
-        price: 150,
-        description: "РЕАЛЬНО ВКУСНЕЙШАЯ булка ПОКУПАЙТЕ",
-        img: `http://mobimg.b-cdn.net/v3/fetch/77/773125d50028b87fc8dd7a310c685a07.jpeg`
-    }
+    const [item, setItem] = useState({})
+    const {id} = useParams()
+    useEffect(() => {
+        fetchOneItem(id).then(data => setItem(data))
+    }, [])
+
     return (
         <Container className="mt-3">
             <Row className="align-items-center">
                 <Col className="d-flex justify-content-center">
                     <Form>
-                        <Image width={300} height={300} src={item.img}/>
+                        <Image width={300} height={300} src={process.env.REACT_APP_API_URL + item.img}/>
                         <h2>{item.name}</h2>
                         <div
                             style={{fontSize: 24}}
                         >
                             {item.price} рубля
                         </div>
-                        <text>
+                        <FormText>
                             {item.description}
-                        </text>
+                        </FormText>
                     </Form>
                 </Col>
             </Row>
