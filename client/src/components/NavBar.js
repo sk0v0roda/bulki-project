@@ -1,10 +1,11 @@
 import React, {useContext} from 'react';
 import {Context} from "../index";
-import {Button, Container, Nav, Navbar} from "react-bootstrap";
+import {Button, Container, Image, Nav, Navbar} from "react-bootstrap";
 import {ADMIN_ROUTE, MAIN_PAGE_ROUTE} from "../utils/consts";
 import {observer} from "mobx-react-lite";
 import {NavLink} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
+import logo from "../assets/logo.png"
 
 const NavBar = observer(() => {
     const {user} = useContext(Context)
@@ -17,7 +18,7 @@ const NavBar = observer(() => {
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
-                <NavLink className="m-lg-auto" style={{color: 'white'}} to={MAIN_PAGE_ROUTE}>БуLки</NavLink>
+                <NavLink className="m-lg-auto" style={{color: 'white'}} to={MAIN_PAGE_ROUTE}><Image className="logo" src={logo} alt="БуLки" height="130" width="161"/></NavLink>
                 {
                     user.isAuth ?
                         <Nav className="ml-auto" style={{color: 'white'}}>
