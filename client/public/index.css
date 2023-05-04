@@ -1,0 +1,10 @@
+body {
+    background-color: cornsilk;
+}
+
+.Card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border-color: #007bff;
+    transition: all 0.3s ease-in-out;
+}

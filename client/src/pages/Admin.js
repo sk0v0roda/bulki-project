@@ -8,7 +8,7 @@ const Admin = () => {
         <Container className="d-flex flex-column">
             <Button variant={"outline-primary"} className="mt-5"
             onClick={() => setItemVisible(true)}
-            >Добавить устройство</Button>
+            >Добавить продукт</Button>
             <CreateItem show={itemVisible} onHide={() => setItemVisible(false)}/>
         </Container>
     );

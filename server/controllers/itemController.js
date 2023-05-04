@@ -32,6 +32,14 @@ class ItemController {
         })
         return res.json(item)
     }
+
+    async delete(req, res) {
+        const {id} = req.params
+        const item = await Item.destroy({
+            where: {id}
+        })
+        return res.json(item)
+    }
 }
 
 module.exports = new ItemController()
