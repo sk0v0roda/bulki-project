@@ -1,10 +1,8 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Form, Modal} from "react-bootstrap";
-import {Context} from "../index";
 import {createItem} from "../http/itemAPI";
 
 const CreateItem = ({show, onHide}) => {
-    const {item} = useContext(Context)
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [description, setDescription] = useState('')

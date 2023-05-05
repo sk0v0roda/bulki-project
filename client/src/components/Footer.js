@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Container, Nav, Navbar} from "react-bootstrap";
+import {Container, Nav, Navbar} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {LOGIN_ROUTE} from "../utils/consts";
 import YandexMap from "./YandexMap";

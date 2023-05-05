@@ -5,8 +5,15 @@ export const createItem = async (item) => {
     return data
 }
 
-export const fetchItems = async () => {
-    const {data} = await $host.get('api/item')
+export const updateItem = async (id, item) => {
+    const {data} = await $authHost.post('api/item/' + id, item)
+    return data
+}
+
+export const fetchItems = async (page, limit=5) => {
+    const {data} = await $host.get('api/item', {params: {
+            page, limit
+        }})
     return data
 }
 

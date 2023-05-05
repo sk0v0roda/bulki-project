@@ -1,20 +1,28 @@
 import React, {useContext, useEffect} from 'react';
-import {Col, Container, Nav, Navbar, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import ItemList from "../components/ItemList";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {fetchItems} from "../http/itemAPI";
-import {LOGIN_ROUTE} from "../utils/consts";
-import YandexMap from "../components/YandexMap";
-import {useNavigate} from "react-router-dom";
 import Footer from "../components/Footer";
+import Pages from "../components/Pages";
 
 const MainPage = observer(() => {
     const {item} = useContext(Context)
-    const navigate = useNavigate()
+
     useEffect(() => {
-        fetchItems().then(data => item.setItems(data))
-    })
+        fetchItems(1, 8).then(data => {
+            item.setItems(data.rows)
+            item.setTotalCount(data.count)
+        })
+    }, [])
+
+    useEffect(() => {
+        fetchItems(item.page, 8).then(data => {
+            item.setItems(data.rows)
+            item.setTotalCount(data.count)
+        })
+    }, [item.page])
 
     return (
         <div>
@@ -25,6 +33,7 @@ const MainPage = observer(() => {
                     </Col>
                     <Col md={12}>
                         <ItemList/>
+                        <Pages />
                     </Col>
                     <Col md={1}>
 
